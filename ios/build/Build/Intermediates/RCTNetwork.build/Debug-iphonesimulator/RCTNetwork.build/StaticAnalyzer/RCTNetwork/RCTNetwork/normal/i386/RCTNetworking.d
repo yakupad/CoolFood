@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/yakupad/Desktop/CoolFood/node_modules/react-native/Libraries/Network/RCTNetworking.mm \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTNetworkTask.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestDelegate.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestHandler.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTNetworking.h \
+  /Users/yakupad/Desktop/CoolFood/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventEmitter.h \
+  /Users/yakupad/Desktop/CoolFood/node_modules/react-native/Libraries/Network/RCTHTTPRequestHandler.h
