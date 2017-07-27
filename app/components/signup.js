@@ -13,7 +13,7 @@ import {
 
 
 
-export default class Login extends Component {
+export default class Signup extends Component {
   render() {
     return (
     <Image source={require('../img/foodbg.jpg')} style={styles.container}>
@@ -22,22 +22,20 @@ export default class Login extends Component {
            
           </Image>
           <Text style={styles.logotext}>Cool Food </Text>
-          <Text style={styles.pagetitle}>Login</Text>
-       
+           <Text style={styles.pagetitle}>Signup</Text>
+        
        
          <TextInput underlineColorAndroid='transparent' placeholder='Email' style={styles.textinput}/>
          <TextInput underlineColorAndroid='transparent' placeholder='Password' style={styles.textinput}/>
-     
-        <TouchableOpacity style={styles.loginbtn}>
-            <Text>LOGIN</Text>
-        </TouchableOpacity>
+         <TextInput underlineColorAndroid='transparent' placeholder='Username' style={styles.textinput}/>
+
         <TouchableOpacity style={styles.registerbtn}>
             <Text>REGISTER</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.forgotbtn}>
-            <Text>FORGOT PASSWORD</Text>
+        <TouchableOpacity style={styles.loginbtn}>
+            <Text>LOGIN</Text>
         </TouchableOpacity>
-       </View>
+        </View>
       </Image>
     );
   }
@@ -65,7 +63,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: '#1975A9'
   },
-pagetitle: {
+    pagetitle: {
     backgroundColor: 'rgba(0,0,0,0)',
     fontSize: 25,
     color: '#FFFFFF',

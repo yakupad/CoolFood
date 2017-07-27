@@ -15,24 +15,25 @@ import {
   Image,
   TextInput
 } from 'react-native';
-import Login from './app/components/login';
-import Signup from './app/components/signup';
-import Home from './app/components/home';
 
-export default class CoolFood extends Component {
+export default class Home extends Component {
   render() {
     return (
       
-        <Home />
+        <View style={styles.container}>
+            <Text>Deneme</Text>
+            </View>
      
     );
   }
 }
 
 const styles = StyleSheet.create({
-  
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  }
   
 });
-
-AppRegistry.registerComponent('CoolFood', () => CoolFood);
-
