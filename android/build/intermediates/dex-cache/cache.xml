@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_220a787c7f20ba850db6c621b6743ec5df7a0fe9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_52637e08b70394506bac82b3272792688d8f28ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_87bf37c80f755f135ef48952f029c292af3029ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_a9456d1febb417a06988cf8c0a90efe87a5d33ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.0.1_d20559fe525b8f73776807162d30532173d177d0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d9c4402c3057225d80cbbbec52154e7a25b0ebdf">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.0.1_a9b942c4b0dffe25df62db9cac434687dcb16d3c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c5526d30278eb171f4a1325bd6b927c9057c91f4">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.46.4_13514e3d4883e93ec473ff2aafcc497a9503b79b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_19de214ae58fab6e5421a5f0f72d694c68a9a579.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_58ee92658660da2b8d4c9a865913aa774b60d0e2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_7b9c6014dd437ac5d822b79e98d41dfc24c4a00b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ba9b39366b723ccff6359d1117332968e98a4aca">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.0.1_0e2ab716005dbebfe65f8b84b4f82e60f43ae2e0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_ef1338afaad1f9b368bb3fa47cfa939c29d0640c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_cb14542ebd75ef22035479de1280f287a290f396.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_39d3d696eda4e945f98750829f8a2901b645bc43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_b1b68342e5ae42aa09fd68d2f61e6c013ef1d86f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_7d8274a52ee1cb8305490e91c27804835a09e758.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.0.1_b91c8f65ede8ab38a2b1236ab80006f6850d4099.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_ea81e45124850facad625864af6cfbc57ea23da8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_b5e67ebaffa6f3e9cf2dbaac1f27e3e66335cfba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_574390d94093383a09f6f5d6d79d900211d9ff32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_c7a988e6f174f2f2726da9aaed6e967da325a497.jar" />
+    </item>
+
+</items>
