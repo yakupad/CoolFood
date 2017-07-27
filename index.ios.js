@@ -23,7 +23,7 @@ export default class CoolFood extends Component {
   render() {
     return (
       
-        <Home />
+        <Signup />
      
     );
   }
