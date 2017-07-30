@@ -8,12 +8,35 @@ import {
   Navigator,
   Image,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
+import Auth0 from 'react-native-auth0';
+
+var credentials = require('./helper/auth0-credentials');
+const auth0 = new Auth0(credentials);
+
 
 
 
 export default class Login extends Component {
+
+  _onLogin() {
+    auth0
+        .webAuth
+        .authorize({scope: 'openid email', audience: 'https://' + credentials.domain + '/userinfo'})
+        .then(credentials =>
+              Alert.alert(
+                  'Success',
+                  'AccessToken: ' + credentials.accessToken,
+                  [
+                    {text: 'OKff', onPress: () => console.log('OK Pressed')},
+                  ],
+                  { cancelable: false }
+                ))
+        .catch(error => console.log(error));
+  }
+
   render() {
     return (
     <Image source={require('../img/foodbg.jpg')} style={styles.container}>
@@ -27,9 +50,9 @@ export default class Login extends Component {
        
          <TextInput underlineColorAndroid='transparent' placeholder='Email' style={styles.textinput}/>
          <TextInput underlineColorAndroid='transparent' placeholder='Password' style={styles.textinput}/>
-     
-        <TouchableOpacity style={styles.loginbtn}>
-            <Text>LOGIN</Text>
+
+        <TouchableOpacity style={styles.loginbtn} >
+            <Button onPress={this._onLogin} title="LOGIN" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.registerbtn}>
             <Text>REGISTER</Text>

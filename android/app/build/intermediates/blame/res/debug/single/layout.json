@@ -4,12 +4,12 @@
         "source": "/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/layout/fps_view.xml"
     },
     {
-        "merged": "/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_screen_toolbar.xml"
-    },
-    {
         "merged": "/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
         "source": "/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",

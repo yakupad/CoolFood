@@ -1,4 +1,4 @@
-#Wed Jul 26 15:40:44 EET 2017
+#Sat Jul 29 18:49:51 EET 2017
 base.0=/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
 file.0=/Users/yakupad/Desktop/CoolFood/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

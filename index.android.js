@@ -18,12 +18,13 @@ import {
 import Login from './app/components/login';
 import Signup from './app/components/signup';
 import Home from './app/components/home';
+import Index from './app/components/index';
 
 export default class CoolFood extends Component {
   render() {
     return (
       
-        <Home />
+        <Index/>
      
     );
   }
