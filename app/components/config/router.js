@@ -25,7 +25,30 @@ export const FeedStack = StackNavigator({
   },
 });
 
+export const LoginStack = StackNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions: {
+      title: 'Login',
+    },
+  },
+  Home: {
+    screen: Home,
+
+  },
+}, {
+  mode: 'modal',
+  headerMode: 'none',
+});
+
 export const Tabs = TabNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
+    },
+  },
   Feed: {
     screen: FeedStack,
     navigationOptions: {
@@ -53,11 +76,11 @@ export const SettingsStack = StackNavigator({
 
 export const HomeStack = StackNavigator({
   Home: {
-    screen: Home,
-    navigationOptions: {
-      title: 'Home',
-    },
+    screen: Home
   },
+}, {
+  mode: 'modal',
+  headerMode: 'none',
 });
 
 export const SignupStack = StackNavigator({
@@ -69,13 +92,17 @@ export const SignupStack = StackNavigator({
   },
 });
 
+
+
 export const Root = StackNavigator({
-    Login: {
+   Login: {
         screen: Login
     },
   Tabs: {
     screen: Tabs,
   },
+
+ 
   Settings: {
     screen: SettingsStack,
   },

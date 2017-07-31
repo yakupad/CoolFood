@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Root, Tabs } from './app/components/config/router'
+import {LoginStack, Root, Tabs } from './app/components/config/router'
 
 
 class PageRouter extends Component {
