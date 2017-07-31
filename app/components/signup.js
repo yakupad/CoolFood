@@ -4,16 +4,35 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   Navigator,
   Image,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert,
+  ScrollView
 } from 'react-native';
 
+import { Tile, List, ListItem, Button } from 'react-native-elements';
+import Auth0 from 'react-native-auth0';
 
+var credentials = require('./helper/auth0-credentials');
+const auth0 = new Auth0(credentials);
 
 export default class Signup extends Component {
+
+  handleLoginPress = () => {
+    this.props.navigation.navigate('Login');
+  };
+
+  _onSignup() {
+    auth0
+        .webAuth
+        .authorize({scope: 'openid email', audience: 'https://' + credentials.domain + '/userinfo'})
+        .then(credentials =>
+              console.log(credentials))
+        .catch(error => console.log(error));
+  }
+
   render() {
     return (
     <Image source={require('../img/foodbg.jpg')} style={styles.container}>
@@ -30,10 +49,10 @@ export default class Signup extends Component {
          <TextInput underlineColorAndroid='transparent' placeholder='Username' style={styles.textinput}/>
 
         <TouchableOpacity style={styles.registerbtn}>
-            <Text>REGISTER</Text>
+            <Button onPress={this._onSignup} title="Signup" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.loginbtn}>
-            <Text>LOGIN</Text>
+            <Button onPress={this.handleLoginPress} title="Login" />
         </TouchableOpacity>
         </View>
       </Image>

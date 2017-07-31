@@ -4,39 +4,73 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   Navigator,
   Image,
   TextInput,
   TouchableOpacity,
-  Alert
+  Alert,
+  ScrollView
 } from 'react-native';
+import { Tile, List, ListItem, Button } from 'react-native-elements';
 import Auth0 from 'react-native-auth0';
+
+import Home from './home';
 
 var credentials = require('./helper/auth0-credentials');
 const auth0 = new Auth0(credentials);
 
-
-
+var email= ""
+var password = "r"
+const toke = ""
 
 export default class Login extends Component {
 
-  _onLogin() {
-    auth0
-        .webAuth
-        .authorize({scope: 'openid email', audience: 'https://' + credentials.domain + '/userinfo'})
-        .then(credentials =>
-              Alert.alert(
-                  'Success',
-                  'AccessToken: ' + credentials.accessToken,
-                  [
-                    {text: 'OKff', onPress: () => console.log('OK Pressed')},
-                  ],
-                  { cancelable: false }
-                ))
-        .catch(error => console.log(error));
+  handleHomePress = () => {
+    this.props.navigation.navigate('Home');
+  };
+
+  handleSignupPress = () => {
+    this.props.navigation.navigate('Signup');
+  };
+  
+  gitt() {
+    this.handleHomePress
   }
 
+
+  _onLogin = () => {
+    auth0
+    .auth
+    .passwordRealm({username: email, password: password, realm: "Username-Password-Authentication"})
+    .then(credentials =>
+      toke = credentials.accessToken,
+      alert(toke),
+      
+    )
+    .catch(console.error);
+  
+   if (toke == "") {
+      alert("Giriş yapılamadı")
+   }else {
+
+     this.handleHomePress
+
+   }
+  }
+
+  _mesaj() {
+    alert(password)
+  }
+
+  _profileInfo() {
+    auth0
+    .auth
+    .userInfo({token: toke})
+    .then(console.log)
+    .catch(console.error);
+  }
+/*
+   */
   render() {
     return (
     <Image source={require('../img/foodbg.jpg')} style={styles.container}>
@@ -46,19 +80,32 @@ export default class Login extends Component {
           </Image>
           <Text style={styles.logotext}>Cool Food </Text>
           <Text style={styles.pagetitle}>Login</Text>
-       
-       
-         <TextInput underlineColorAndroid='transparent' placeholder='Email' style={styles.textinput}/>
-         <TextInput underlineColorAndroid='transparent' placeholder='Password' style={styles.textinput}/>
+       <Button
+          title="Home"
+          buttonStyle={{ marginTop: 20 }}
+          onPress={this.handleHomePress}
+        />
+    
+         <TextInput underlineColorAndroid='transparent' placeholder='Email' style={styles.textinput} onChangeText={(text)=>email=text}/>
+         <TextInput underlineColorAndroid='transparent' placeholder='Password' style={styles.textinput} onChangeText={(text)=>password=text}/>
 
         <TouchableOpacity style={styles.loginbtn} >
             <Button onPress={this._onLogin} title="LOGIN" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.registerbtn}>
-            <Text>REGISTER</Text>
+            <Button
+          title="Register"
+          buttonStyle={{ marginTop: 20 }}
+          onPress={this.handleSignupPress}
+        />
         </TouchableOpacity>
         <TouchableOpacity style={styles.forgotbtn}>
-            <Text>FORGOT PASSWORD</Text>
+            
+             <Button
+          title="password ofgrenr"
+          buttonStyle={{ marginTop: 20 }}
+          onPress={this._mesaj}
+        />
         </TouchableOpacity>
        </View>
       </Image>
