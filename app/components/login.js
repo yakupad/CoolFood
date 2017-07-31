@@ -32,29 +32,19 @@ export default class Login extends Component {
   handleSignupPress = () => {
     this.props.navigation.navigate('Signup');
   };
-  
-  gitt() {
-    this.handleHomePress
-  }
-
-
+ 
   _onLogin = () => {
-    auth0
-    .auth
-    .passwordRealm({username: email, password: password, realm: "Username-Password-Authentication"})
-    .then(credentials =>
-      toke = credentials.accessToken,
-      alert(toke),
-      
+  auth0
+     .auth
+     .passwordRealm({username: email, password: password, realm: "Username-Password-Authentication"})
+     .then(credentials =>
+      toke = credentials.accessToken
     )
-    .catch(console.error);
-  
+    .catch("");
    if (toke == "") {
-      alert("Giriş yapılamadı")
+      
    }else {
-
-     this.handleHomePress
-
+     return this.props.navigation.navigate('Home');
    }
   }
 
