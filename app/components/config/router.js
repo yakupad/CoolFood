@@ -102,7 +102,7 @@ export const Root = StackNavigator({
     screen: Tabs,
   },
 Feed: {
-    screen: Feed,
+    screen: FeedStack,
   },
  
   Settings: {

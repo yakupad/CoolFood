@@ -12,134 +12,88 @@ import { FormLabel, FormInput,FormValidationMessage,Button,Text,CheckBox,SearchB
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Grid, Col, Row} from 'react-native-elements';
 
-class Feed extends Component {
-  renderFormsSearchBars() {
-    
-      return (
-      
-<View>
-          
-  <View>
-
-    <View style={{flex: 1, flexDirection: 'row'}}>
-          <View style={{width: 300}}>
-                 <FormLabel containerStyle={styles.labelContainerStyle}>Name</FormLabel>
-          </View>
-          <View >
-                  <Button
-                    icon={{name: 'cached'}}/>
-          </View>
-      </View>
-              <View style={{flex: 1, flexDirection: 'row'}}>  
-                  <FormInput ref="form2"
-                             containerRef="containerRefYOYO"
-                             textInputRef="textInputRef"
-                             placeholder="Please enter your name..." />  
-              </View>
-      </View>
-
-<View>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-          <View style={{width: 300}}>
-                 <FormLabel textInputRef="textInputRef" containerStyle={styles.labelContainerStyle}>Address</FormLabel>
-          </View>
-          <View >
-                  <Button icon={{name: 'cached'}}/>
-          </View>
-      </View>
-              <View style={{flex: 1, flexDirection: 'row'}}>  
-                  <FormInput ref="form1"
-                             containerRef="containerRefYOYO"
-                             textInputRef="textInputRef"
-                             placeholder="PPlease enter your address..." />  
-              </View>
-  </View>
-
-
-<View>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-          <View style={{width: 300}}>
-                 <FormLabel textInputRef="textInputRef" containerStyle={styles.labelContainerStyle}>Phone</FormLabel>
-          </View>
-          <View >
-                  <Button icon={{name: 'cached'}}/>
-          </View>
-        </View>
-              <View style={{flex: 1, flexDirection: 'row'}}>  
-                  <FormInput ref="form1"
-                             containerRef="containerRefYOYO"
-                             textInputRef="textInputRef"
-                             placeholder="PPlease enter your phone..." />  
-              </View>
-   </View>
-
-
-   <View>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-          <View style={{width: 300}}>
-                 <FormLabel textInputRef="textInputRef" containerStyle={styles.labelContainerStyle}>Phone</FormLabel>
-          </View>
-          <View >
-                  <Button icon={{name: 'cached'}}/>
-          </View>
-        </View>
-              <View style={{flex: 1, flexDirection: 'row'}}>  
-                  <FormInput ref="form1"
-                             containerRef="containerRefYOYO"
-                             textInputRef="textInputRef"
-                             placeholder="PPlease enter your phone..." />  
-              </View>
-   </View>
-
-
-   <View>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-          <View style={{width: 300}}>
-                 <FormLabel textInputRef="textInputRef" containerStyle={styles.labelContainerStyle}>Phone</FormLabel>
-          </View>
-          <View >
-                  <Button icon={{name: 'cached'}}/>
-          </View>
-        </View>
-              <View style={{flex: 1, flexDirection: 'row'}}>  
-                  <FormInput ref="form1"
-                             containerRef="containerRefYOYO"
-                             textInputRef="textInputRef"
-                             placeholder="PPlease enter your phone..." />  
-              </View>
-   </View>
-
-        
-
-
-
-
-
+var RNFS = require('react-native-fs');
+ // create a path you want to write to
  
 
-      
-        
 
 
+var foursquare = require('react-native-foursquare-api')({
+  clientID: 'MBC3KOWOVGC3T4RDFTSH33ZAM13OBT4SFW55XFSIYI2FYMOS',
+  clientSecret: 'YNNFVIALILPEPFMEPO1TDUEHA2EI1NVUHA0ABBKTD5YXPZLR',
+  style: 'foursquare', // default: 'foursquare'
+  version: '20140806' //  default: '20140806'
+});
 
-         
-          
-          
-          <Button
-            onPress={() => console.log('yo')}
-            icon={{ name: 'done' }}
-            buttonStyle={{ marginTop: 15 }}
-            title="SUBMIT"
-          />
-          
-          
-          
-        </View>
-      );
-    }
+class Feed extends Component {
   
+    onLearnMore = (user) => {
+    this.props.navigation.navigate('Details', { ...user });
+  };
+
+  getNewVenue = () => {
+    alert("yenilendi")
+  };
+
+  constructor(props) {
+    super(props);
+
+   this.state = {
+      latitude: null,
+      longitude: null,
+      error: null,
+      venues: [],
+    };
+    
+    
+
+}
+ 
+
+
+componentDidMount(){
+  
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
+        var params = {
+	"ll": String(this.state.latitude) +","+ String(this.state.longitude),
+  "categoryId":"4d4b7105d754a06374d81259"
+  }
+foursquare.venues.getVenues(params)
+      .then(function(venues) {
+        
+        var asd = venues["response"]["venues"]
+        
+        this.setState({venues:asd})
+        console.log(this.state.venues)
+      
+
+
+    	}.bind(this))
+      .catch(function(err){
+        console.log(err);
+
+      })
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    ); 
+
+  
+}
+  
+
   render() {
+    
+    
+
     return (
+      
       <ScrollView
         style={{ backgroundColor: 'white' }}
         keyboardShouldPersistTaps="always"
@@ -148,9 +102,36 @@ class Feed extends Component {
           <Icon color="white" name="pets" size={62}/>
           <Text style={styles.heading}>CoolFood</Text>
         </View>
-        {this.renderFormsSearchBars()}
         
+        
+        <ScrollView>
+        <List>
+          {
+            
+            users.map((user) => (
+            <ListItem
+              key={user.login.username}
+              roundAvatar
+              avatar={{ uri: user.picture.thumbnail }}
+              title={`${user.name.first.toUpperCase()} ${user.name.last.toUpperCase()}`}
+              subtitle={user.email}
+              onPress={() => this.onLearnMore(user)}
+              leftIcon={{name:"cached"}}
+              leftIconOnPress={() => this.getNewVenue()}
+            />
+          ))}
+        </List>
       </ScrollView>
+        <Button
+            onPress={() => console.log('yo')}
+            icon={{ name: 'done' }}
+            buttonStyle={{ marginTop: 15 }}
+            title="SUBMIT"
+          />
+          {console.log(this.state.venues)}
+      </ScrollView>
+
+      
     );
   }
 }

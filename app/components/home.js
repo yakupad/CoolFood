@@ -28,7 +28,8 @@ export default class Home extends Component {
       <ScrollView tabLabel="ios-paper" style={styles.tabView}>
         <ScrollView>
         <List>
-          {users.map((user) => (
+          {
+            users.map((user) => (
             <ListItem
               key={user.login.username}
               roundAvatar
