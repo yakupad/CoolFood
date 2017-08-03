@@ -59,7 +59,7 @@ export const Tabs = TabNavigator({
     },
   },
   Feed: {
-    screen: FeedStack,
+    screen: Feed,
     navigationOptions: {
       tabBarLabel: 'Feed',
       tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
@@ -101,7 +101,9 @@ export const Root = StackNavigator({
   Tabs: {
     screen: Tabs,
   },
-
+Feed: {
+    screen: Feed,
+  },
  
   Settings: {
     screen: SettingsStack,
