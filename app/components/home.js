@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,8 +8,17 @@ import {
 
 import FacebookTabBar from './helper/facebookTabBar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import Feed from './Feed';
 
-export default React.createClass({
+import { List, ListItem } from 'react-native-elements';
+import { users } from './config/data';
+
+
+
+export default class Home extends Component {
+  onLearnMore = (user) => {
+    this.props.navigation.navigate('Details', { ...user });
+  };
   render() {
     return <ScrollableTabView
       style={{marginTop: 20, }}
@@ -17,9 +26,20 @@ export default React.createClass({
       renderTabBar={() => <FacebookTabBar />}
       >
       <ScrollView tabLabel="ios-paper" style={styles.tabView}>
-        <View style={styles.card}>
-          <Text>News</Text>
-        </View>
+        <ScrollView>
+        <List>
+          {users.map((user) => (
+            <ListItem
+              key={user.login.username}
+              roundAvatar
+              avatar={{ uri: user.picture.thumbnail }}
+              title={`${user.name.first.toUpperCase()} ${user.name.last.toUpperCase()}`}
+              subtitle={user.email}
+              onPress={() => this.onLearnMore(user)}
+            />
+          ))}
+        </List>
+      </ScrollView>
       </ScrollView>
       <ScrollView tabLabel="ios-people" style={styles.tabView}>
         <View style={styles.card}>
@@ -42,8 +62,8 @@ export default React.createClass({
         </View>
       </ScrollView>
     </ScrollableTabView>;
-  },
-});
+  }
+};
 
 const styles = StyleSheet.create({
   tabView: {
@@ -56,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: 'rgba(0,0,0,0.1)',
     margin: 5,
-    height: 150,
+    height: 500,
     padding: 15,
     shadowColor: '#ccc',
     shadowOffset: { width: 2, height: 2, },

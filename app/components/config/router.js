@@ -17,12 +17,21 @@ export const FeedStack = StackNavigator({
       title: 'Feed',
     },
   },
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      title: 'Home',
+    },
+  },
   Details: {
     screen: UserDetail,
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.name.first.toUpperCase()} ${navigation.state.params.name.last.toUpperCase()}`,
     }),
   },
+}, {
+  mode: 'modal',
+  headerMode: 'none',
 });
 
 export const LoginStack = StackNavigator({
@@ -74,15 +83,6 @@ export const SettingsStack = StackNavigator({
   },
 });
 
-export const HomeStack = StackNavigator({
-  Home: {
-    screen: Home
-  },
-}, {
-  mode: 'modal',
-  headerMode: 'none',
-});
-
 export const SignupStack = StackNavigator({
   Signup: {
     screen: Signup,
@@ -106,9 +106,6 @@ export const Root = StackNavigator({
   Settings: {
     screen: SettingsStack,
   },
-Home: {
-    screen: HomeStack,
-},
 Signup: {
     screen: Signup,
 }
