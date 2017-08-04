@@ -43,6 +43,8 @@ class Feed extends Component {
       longitude: null,
       error: null,
       venues: [],
+      venuess: [],
+      venueimg: []
     };
     
     
@@ -62,18 +64,27 @@ componentDidMount(){
         });
         var params = {
 	"ll": String(this.state.latitude) +","+ String(this.state.longitude),
-  "categoryId":"4d4b7105d754a06374d81259"
+  "categoryId":"4d4b7105d754a06374d81259",
+  "offset":"4",
+  "limit":"5"
   }
-foursquare.venues.getVenues(params)
+foursquare.venues.explore(params)
       .then(function(venues) {
+        var asd = venues["response"]["groups"]
         
-        var asd = venues["response"]["venues"]
+            this.setState({venues:asd})
+            
+        this.state.venues.map((gelen,index) => (
+            this.setState({venuess:gelen["items"]}),
+            this.getVenueIMG(venuess["categories"]) 
+        )
+         
+      );
+       console.log(this.state.venuess)
+
+       
+      console.log(this.state.venueimg)
         
-        this.setState({venues:asd})
-        console.log(this.state.venues)
-      
-
-
     	}.bind(this))
       .catch(function(err){
         console.log(err);
@@ -86,7 +97,15 @@ foursquare.venues.getVenues(params)
 
   
 }
-  
+  getVenueIMG = (venuess) => {
+    console.log(venuess)
+    venuess.map((img,index) => (
+        this.setState({venueimg:img}),
+        console.log(this.state.venueimg.icon["prefix"]+"32"+this.state.venueimg.icon["suffix"])
+      ))
+  };
+
+
 
   render() {
     
@@ -107,28 +126,31 @@ foursquare.venues.getVenues(params)
         <ScrollView>
         <List>
           {
-            
-            users.map((user) => (
+            this.state.venuess.map((venuem,index) => (
+              
             <ListItem
-              key={user.login.username}
+              key={venuem.id}
               roundAvatar
-              avatar={{ uri: user.picture.thumbnail }}
-              title={`${user.name.first.toUpperCase()} ${user.name.last.toUpperCase()}`}
-              subtitle={user.email}
-              onPress={() => this.onLearnMore(user)}
+              avatar={{uri: this.state.venueimg} } 
+              title={venuem.venue.name} //.name.toUpperCase()}
+              subtitle={index}
+              onPress={() => this.onLearnMore(venuem)}
               leftIcon={{name:"cached"}}
               leftIconOnPress={() => this.getNewVenue()}
+              
             />
           ))}
         </List>
       </ScrollView>
+
+
         <Button
             onPress={() => console.log('yo')}
             icon={{ name: 'done' }}
             buttonStyle={{ marginTop: 15 }}
             title="SUBMIT"
           />
-          {console.log(this.state.venues)}
+          
       </ScrollView>
 
       
