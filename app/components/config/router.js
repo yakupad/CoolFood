@@ -26,7 +26,7 @@ export const FeedStack = StackNavigator({
   Details: {
     screen: UserDetail,
     navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.name.first.toUpperCase()} ${navigation.state.params.name.last.toUpperCase()}`,
+      title:"yarouterbu" //`${navigation.state.params.name.first.toUpperCase()} ${navigation.state.params.name.last.toUpperCase()}`,
     }),
   },
 }, {

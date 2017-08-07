@@ -3,7 +3,8 @@ import {
   View,
   ScrollView,
   StyleSheet, 
-  Platform
+  Platform,
+  AsyncStorage
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import { users } from './config/data';
@@ -12,8 +13,8 @@ import { FormLabel, FormInput,FormValidationMessage,Button,Text,CheckBox,SearchB
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Grid, Col, Row} from 'react-native-elements';
 
-var RNFS = require('react-native-fs');
- // create a path you want to write to
+var myDB = require('./DAAsyncStorage');
+var myDBInstance = new myDB();
  
 
 
@@ -27,9 +28,35 @@ var foursquare = require('react-native-foursquare-api')({
 
 class Feed extends Component {
   
-    onLearnMore = (user) => {
-    this.props.navigation.navigate('Details', { ...user });
-  };
+  async setTheItems(key,val,callback) {
+    try {
+      await AsyncStorage.setItem(key,val);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      callback();
+    }
+  }
+
+
+
+    onLearnMore = (venuem) => {
+
+    //AsyncStorage.multiRemove(["@MySuperStore:key","@VenueDetail:key","username","myKey"])
+    this.props.navigation.navigate('Details', { ...venuem });
+AsyncStorage.setItem("yakup","yyyakupp")
+   this.setTheItems("name",venuem.venue.name,function(){}.bind(this));
+   this.setTheItems("venuetext",venuem.tips[0].text,function(){}.bind(this));
+   this.setTheItems("icon",venuem.venue.categories[0].icon.prefix+"32"+venuem.venue.categories[0].icon.suffix,function(){}.bind(this));
+   this.setTheItems("categoryname",venuem.venue.categories[0].name,function(){}.bind(this));
+   this.setTheItems("address",venuem.venue.location.address,function(){}.bind(this));
+   this.setTheItems("city",venuem.venue.location.city,function(){}.bind(this));
+   this.setTheItems("id",venuem.venue.id,function(){}.bind(this));
+   this.setTheItems("currency",venuem.venue.price.currency,function(){}.bind(this));
+   this.setTheItems("venuemessage",venuem.venue.price.message,function(){}.bind(this));
+   this.setTheItems("rating",venuem.venue.rating+"",function(){}.bind(this));
+   this.setTheItems("checkincount",venuem.venue.stats.checkinsCount+"",function(){}.bind(this));   
+    }
 
   getNewVenue = () => {
     alert("yenilendi")
@@ -71,19 +98,20 @@ componentDidMount(){
 foursquare.venues.explore(params)
       .then(function(venues) {
         var asd = venues["response"]["groups"]
-        
-            this.setState({venues:asd})
-            
+            this.setState({venues:asd})    
         this.state.venues.map((gelen,index) => (
-            this.setState({venuess:gelen["items"]}),
-            this.getVenueIMG(venuess["categories"]) 
-        )
-         
-      );
-       console.log(this.state.venuess)
+            this.setState({venuess:gelen["items"]})   
+        )  
+      )
+      console.log(this.state.venuess)
 
+    /*  this.state.venuess["venue"].map((img,index) => (
+        this.setState({venueimg:img}),
+        console.log(this.state.venueimg)
+      ));*/
        
-      console.log(this.state.venueimg)
+      
+
         
     	}.bind(this))
       .catch(function(err){
@@ -97,12 +125,9 @@ foursquare.venues.explore(params)
 
   
 }
-  getVenueIMG = (venuess) => {
-    console.log(venuess)
-    venuess.map((img,index) => (
-        this.setState({venueimg:img}),
-        console.log(this.state.venueimg.icon["prefix"]+"32"+this.state.venueimg.icon["suffix"])
-      ))
+  getVenueIMG = (venuem) => {
+    //console.log(venuess)
+    return `${venuem.venue.categories[0].icon.prefix}${"32"}${venuem.venue.categories[0].icon.suffix}`
   };
 
 
@@ -129,11 +154,12 @@ foursquare.venues.explore(params)
             this.state.venuess.map((venuem,index) => (
               
             <ListItem
+            
               key={venuem.id}
               roundAvatar
-              avatar={{uri: this.state.venueimg} } 
-              title={venuem.venue.name} //.name.toUpperCase()}
-              subtitle={index}
+              avatar={ {uri:this.getVenueIMG(venuem)}} 
+              title= {venuem.venue.name} //.name.toUpperCase()}
+              subtitle={venuem.venue.categories[0].name}
               onPress={() => this.onLearnMore(venuem)}
               leftIcon={{name:"cached"}}
               leftIconOnPress={() => this.getNewVenue()}
