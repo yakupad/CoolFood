@@ -29,18 +29,17 @@ async getTheItems(key,callback) {
 constructor(props) {
     super(props);
 
-   this.getTheItems(["rating","venuetext","id","categoryname","checkincount","address","icon","city","venuemessage","currency","name"],function(val) {
-this.venuedata = val;
-  console.log(val)
-  console.log(val[0][0])
-  console.log(val[0][1])
-
-    })
+   
     
 
 }
 
 componentDidMount(){
+  
+    
+}
+
+deneme() {
   
 }
  
@@ -50,13 +49,11 @@ componentDidMount(){
   return venuedata[index][1]
 }*/
  render() {
-
+this.deneme()
 
  
     //const { reasons,referralId,tips,venue } = this.props.navigation.state.params;
-   
 
-console.log(this.venuedata)
     return (
       <ScrollView>
         <Tile
@@ -65,7 +62,6 @@ console.log(this.venuedata)
           title={`${"yakup"} ${"ad"}`}
           caption={" "}
         />
-
         <List>
           <ListItem
             title="Address"
@@ -87,7 +83,10 @@ console.log(this.venuedata)
           />
           <ListItem
             title="Checkin Count"
-            rightTitle={"uername"}
+            rightTitle={this.getTheItems(["rating","venuetext","id","categoryname","checkincount","address","icon","city","venuemessage","currency","name"],function(val) {
+  this.venuedata = val;
+return val[0][1]
+    })}
             hideChevron
           />
           <ListItem
