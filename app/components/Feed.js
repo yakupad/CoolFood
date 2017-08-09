@@ -12,6 +12,7 @@ import colors from './config/colors';
 import { FormLabel, FormInput,FormValidationMessage,Button,Text,CheckBox,SearchBar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Grid, Col, Row} from 'react-native-elements';
+import MapView from 'react-native-maps';
 
 var myDB = require('./DAAsyncStorage');
 var myDBInstance = new myDB();
@@ -132,12 +133,35 @@ foursquare.venues.explore(params)
 
 
 
+getInitialState() {
+  return {
+    region: {
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    },
+  };
+}
+
+onRegionChange(region) {
+  this.setState({ region });
+}
+
+
+
+
+
+
+
+
   render() {
     
     
 
     return (
       
+
       <ScrollView
         style={{ backgroundColor: 'white' }}
         keyboardShouldPersistTaps="always"
@@ -145,9 +169,10 @@ foursquare.venues.explore(params)
         <View style={styles.headingContainer}>
           <Icon color="white" name="pets" size={62}/>
           <Text style={styles.heading}>CoolFood</Text>
+       
+        
+       
         </View>
-        
-        
         <ScrollView>
         <List>
           {
@@ -169,6 +194,7 @@ foursquare.venues.explore(params)
         </List>
       </ScrollView>
 
+            
 
         <Button
             onPress={() => console.log('yo')}

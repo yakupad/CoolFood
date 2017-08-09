@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView,AsyncStorage } from 'react-native';
+import { ScrollView,AsyncStorage,MapView } from 'react-native';
 import { Tile, List, ListItem } from 'react-native-elements';
 
 var myDB = require('./DAAsyncStorage');
@@ -29,48 +29,69 @@ async getTheItems(key,callback) {
 constructor(props) {
     super(props);
 
+    this.state = {
+      rating: "kmkmkmk",
+      venuetext: null,
+      venuedata: []
+    };
    
     
 
 }
 
-componentDidMount(){
-  
-    
+componentDidMount() {
+
+  this.getTheItems(["rating","venuetext","id","categoryname","checkincount","address","icon","city","venuemessage","currency","name"],function(val) {
+  console.log(val)
+      this.setState({
+        rating : val[0][1],//
+        venuetext : val[1][1], //
+        id: val[2][1],
+        categoryname: val[3][1],
+        checkincount: val[4][1],//
+        address: val[5][1],//
+        icon: val[6][1],
+        city: val[7][1],//
+        venuemessage: val[8][1],//
+        currency: val[9][1],//
+        name: val[10][1]//
+    })
+  }.bind(this))
 }
 
-deneme() {
-  
-}
- 
 
 
-/*getVenueData = (index) => {
-  return venuedata[index][1]
-}*/
- render() {
-this.deneme()
 
- 
-    //const { reasons,referralId,tips,venue } = this.props.navigation.state.params;
+
+
+
+
+
+
+render() {
+
 
     return (
+
+
       <ScrollView>
+       
+        
         <Tile
           imageSrc={{}}
           featured
-          title={`${"yakup"} ${"ad"}`}
-          caption={" "}
+          title={this.state.name}//`${"yakup"} ${"ad"}`
+          caption={this.state.venuetext}
         />
         <List>
           <ListItem
             title="Address"
-            rightTitle={"email"}
+            rightTitle={this.state.address}
             hideChevron
           />
           <ListItem
             title="City"
-            rightTitle={"phone"}
+            rightTitle={this.state.city}
             hideChevron
           />
         </List>
@@ -78,33 +99,22 @@ this.deneme()
         <List>
           <ListItem
             title="Rating"
-            rightTitle={"uername"}
+            rightTitle={this.state.rating}
             hideChevron
           />
           <ListItem
             title="Checkin Count"
-            rightTitle={this.getTheItems(["rating","venuetext","id","categoryname","checkincount","address","icon","city","venuemessage","currency","name"],function(val) {
-  this.venuedata = val;
-return val[0][1]
-    })}
+            rightTitle={this.state.checkincount}
             hideChevron
           />
           <ListItem
             title="Price Message"
-            rightTitle={"birthday"}
+            rightTitle={this.state.venuemessage}
             hideChevron
           />
           <ListItem
             title="Price Currency"
-            rightTitle={"birthday"}
-            hideChevron
-          />
-        </List>
-
-        <List>
-          <ListItem
-            title="Best Comment"
-            rightTitle={"birthday"}
+            rightTitle={this.state.currency}
             hideChevron
           />
         </List>
