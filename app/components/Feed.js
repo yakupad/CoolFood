@@ -18,7 +18,7 @@ var myDB = require('./DAAsyncStorage');
 var myDBInstance = new myDB();
  
 
-
+ var offsetvalue = 0
 
 var foursquare = require('react-native-foursquare-api')({
   clientID: 'MBC3KOWOVGC3T4RDFTSH33ZAM13OBT4SFW55XFSIYI2FYMOS',
@@ -39,30 +39,6 @@ class Feed extends Component {
     }
   }
 
-
-
-    onLearnMore = (venuem) => {
-
-    //AsyncStorage.multiRemove(["@MySuperStore:key","@VenueDetail:key","username","myKey"])
-    this.props.navigation.navigate('Details', { ...venuem });
-AsyncStorage.setItem("yakup","yyyakupp")
-   this.setTheItems("name",venuem.venue.name,function(){}.bind(this));
-   this.setTheItems("venuetext",venuem.tips[0].text,function(){}.bind(this));
-   this.setTheItems("icon",venuem.venue.categories[0].icon.prefix+"32"+venuem.venue.categories[0].icon.suffix,function(){}.bind(this));
-   this.setTheItems("categoryname",venuem.venue.categories[0].name,function(){}.bind(this));
-   this.setTheItems("address",venuem.venue.location.address,function(){}.bind(this));
-   this.setTheItems("city",venuem.venue.location.city,function(){}.bind(this));
-   this.setTheItems("id",venuem.venue.id,function(){}.bind(this));
-   this.setTheItems("currency",venuem.venue.price.currency,function(){}.bind(this));
-   this.setTheItems("venuemessage",venuem.venue.price.message,function(){}.bind(this));
-   this.setTheItems("rating",venuem.venue.rating+"",function(){}.bind(this));
-   this.setTheItems("checkincount",venuem.venue.stats.checkinsCount+"",function(){}.bind(this));   
-    }
-
-  getNewVenue = () => {
-    alert("yenilendi")
-  };
-
   constructor(props) {
     super(props);
 
@@ -72,17 +48,55 @@ AsyncStorage.setItem("yakup","yyyakupp")
       error: null,
       venues: [],
       venuess: [],
-      venueimg: []
+      venueimg: [],
+      selectedvenue: [],
+      tempvenue: null,
     };
-    
-    
+}  
 
-}
- 
+    onLearnMore = (venuem) => {
+
+    //AsyncStorage.multiRemove(["@MySuperStore:key","@VenueDetail:key","username","myKey"])
+    this.props.navigation.navigate('Details', { ...venuem });
+
+   this.setTheItems("name",venuem.venue.name,function(){}.bind(this));
+   this.setTheItems("venuetext",venuem.tips[0].text,function(){}.bind(this));
+   this.setTheItems("icon",venuem.venue.categories[0].icon.prefix+"32"+venuem.venue.categories[0].icon.suffix,function(){}.bind(this));
+   this.setTheItems("categoryname",venuem.venue.categories[0].name,function(){}.bind(this));
+   this.setTheItems("address",venuem.venue.location.address,function(){}.bind(this));
+   this.setTheItems("city",venuem.venue.location.city,function(){}.bind(this));
+   this.setTheItems("id",venuem.venue.id,function(){}.bind(this));
+   //this.setTheItems("currency",this.state.venuepricecurrency,function(){}.bind(this));
+   //this.setTheItems("venuemessage",this.state.venuepricemessage,function(){}.bind(this));
+   this.setTheItems("rating",venuem.venue.rating+"",function(){}.bind(this));
+   this.setTheItems("checkincount",venuem.venue.stats.checkinsCount+"",function(){}.bind(this));   
+    }
+
+   
+  getNewVenue = (venuem) => {
+    this.foursquareAPI(offsetvalue = offsetvalue + 1)
+    this.state.tempvenue = venuem
+    
+  };
+  
+  addListVenue() {
+    console.log("tempdata")
+    console.log(this.state.tempvenue)
+      this.state.selectedvenue.push(this.state.tempvenue)
+    this.setState({selectedvenue: this.state.selectedvenue})
+    console.log(this.state.selectedvenue)
+   this.getNewVenue()
+  }
+
+
+  
 
 
 componentDidMount(){
-  
+  this.foursquareAPI(0)
+}
+
+foursquareAPI(offsett){
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
@@ -93,8 +107,8 @@ componentDidMount(){
         var params = {
 	"ll": String(this.state.latitude) +","+ String(this.state.longitude),
   "categoryId":"4d4b7105d754a06374d81259",
-  "offset":"4",
-  "limit":"5"
+  "offset":offsett,
+  "limit":"1"
   }
 foursquare.venues.explore(params)
       .then(function(venues) {
@@ -106,11 +120,8 @@ foursquare.venues.explore(params)
       )
       console.log(this.state.venuess)
 
-    /*  this.state.venuess["venue"].map((img,index) => (
-        this.setState({venueimg:img}),
-        console.log(this.state.venueimg)
-      ));*/
-       
+    
+      
       
 
         
@@ -133,31 +144,31 @@ foursquare.venues.explore(params)
 
 
 
-getInitialState() {
-  return {
-    region: {
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    },
-  };
-}
-
-onRegionChange(region) {
-  this.setState({ region });
-}
-
-
-
-
 
 
 
 
   render() {
-    
-    
+  
+
+let getir = this.state.selectedvenue.map((venuem,index) => {
+      
+  return (
+            <ListItem
+              key={venuem.id}
+              roundAvatar
+              avatar={ {uri:this.getVenueIMG(venuem)}} 
+              title= {venuem.venue.name} //.name.toUpperCase()}
+              subtitle={venuem.venue.categories[0].name}
+              onPress={() => this.onLearnMore(venuem)}
+              
+              
+            />
+            
+        )
+          })
+  
+
 
     return (
       
@@ -177,7 +188,7 @@ onRegionChange(region) {
         <List>
           {
             this.state.venuess.map((venuem,index) => (
-              
+              this.state.tempvenue = venuem , 
             <ListItem
             
               key={venuem.id}
@@ -187,22 +198,27 @@ onRegionChange(region) {
               subtitle={venuem.venue.categories[0].name}
               onPress={() => this.onLearnMore(venuem)}
               leftIcon={{name:"cached"}}
-              leftIconOnPress={() => this.getNewVenue()}
+              leftIconOnPress={() => this.getNewVenue(venuem)}
               
             />
           ))}
         </List>
+        
+
+             
+              
+
       </ScrollView>
 
             
 
         <Button
-            onPress={() => console.log('yo')}
+            onPress={() => this.addListVenue()}
             icon={{ name: 'done' }}
             buttonStyle={{ marginTop: 15 }}
             title="SUBMIT"
           />
-          
+          {getir}
       </ScrollView>
 
       

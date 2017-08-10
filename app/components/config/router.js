@@ -17,21 +17,12 @@ export const FeedStack = StackNavigator({
       title: 'Feed',
     },
   },
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      title: 'Home',
-    },
-  },
   Details: {
     screen: UserDetail,
     navigationOptions: ({ navigation }) => ({
       title:"yarouterbu" //`${navigation.state.params.name.first.toUpperCase()} ${navigation.state.params.name.last.toUpperCase()}`,
     }),
   },
-}, {
-  mode: 'modal',
-  headerMode: 'none',
 });
 
 export const LoginStack = StackNavigator({
@@ -59,7 +50,7 @@ export const Tabs = TabNavigator({
     },
   },
   Feed: {
-    screen: Feed,
+    screen: FeedStack,
     navigationOptions: {
       tabBarLabel: 'Feed',
       tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
@@ -101,7 +92,7 @@ export const Root = StackNavigator({
   Tabs: {
     screen: Tabs,
   },
-Feed: {
+  Feed: {
     screen: FeedStack,
   },
  

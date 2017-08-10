@@ -30,9 +30,17 @@ constructor(props) {
     super(props);
 
     this.state = {
-      rating: "kmkmkmk",
-      venuetext: null,
-      venuedata: []
+      rating : " ",//
+        venuetext : " ", //
+        id: " ",
+        categoryname: " ",
+        checkincount: " ",//
+        address: " ",//
+        icon: " ",
+        city: " ",
+        venuemessage: " ",
+        currency: " ",
+        name: " "
     };
    
     
@@ -54,6 +62,7 @@ componentDidMount() {
         city: val[7][1],//
         venuemessage: val[8][1],//
         currency: val[9][1],//
+
         name: val[10][1]//
     })
   }.bind(this))
