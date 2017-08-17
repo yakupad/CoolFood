@@ -79,6 +79,13 @@ this.postgraph = {
 
     //AsyncStorage.multiRemove(["@MySuperStore:key","@VenueDetail:key","username","myKey"])
     this.props.navigation.navigate('Details', { ...venuem });
+var currency = " ", venuemessage = " "
+try {
+  currency = venuem.venue.price.currency
+  venuemessage = venuem.venue.price.message
+} catch (error) {
+  console.log(error)
+}
 
    this.setTheItems("name",venuem.venue.name,function(){}.bind(this));
    this.setTheItems("venuetext",venuem.tips[0].text,function(){}.bind(this));
@@ -87,9 +94,9 @@ this.postgraph = {
    this.setTheItems("address",venuem.venue.location.address,function(){}.bind(this));
    this.setTheItems("city",venuem.venue.location.city,function(){}.bind(this));
    this.setTheItems("id",venuem.venue.id,function(){}.bind(this));
-   this.setTheItems("currency",venuem.venue.price.currency ,function(){}.bind(this));
-   this.setTheItems("venuemessage",venuem.venue.price.message,function(){}.bind(this));
-   this.setTheItems("rating",venuem.venue.rating+"",function(){}.bind(this));
+   this.setTheItems("currency", currency ,function(){}.bind(this));
+   this.setTheItems("venuemessage",venuemessage + " ",function(){}.bind(this));
+   this.setTheItems("rating",venuem.venue.rating + " ",function(){}.bind(this));
    this.setTheItems("checkincount",venuem.venue.stats.checkinsCount+"",function(){}.bind(this));   
     }
 

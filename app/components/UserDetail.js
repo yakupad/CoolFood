@@ -39,7 +39,7 @@ constructor(props) {
         icon: " ",
         city: " ",
         venuemessage: " ",
-        currency: " ",
+        currency: " rrr",
         name: " "
     };
    
@@ -49,8 +49,8 @@ constructor(props) {
 
 componentDidMount() {
 
-  this.getTheItems(["rating","venuetext","id","categoryname","checkincount","address","icon","city","venuemessage","currency","name"],function(val) {
-  console.log(val)
+  this.getTheItems(["rating","venuetext","id","categoryname","checkincount","address","icon","city","currency","venuemessage","name"],function(val) {
+  
       this.setState({
         rating : val[0][1],//
         venuetext : val[1][1], //
