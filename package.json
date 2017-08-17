@@ -7,7 +7,12 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"@exponent/vector-icons": "^4.0.0",
+		"apollo-client": "^1.9.1",
+		"expo": "^19.0.1",
+		"graphql-tag": "^2.4.2",
 		"react": "^16.0.0-alpha.12",
+		"react-apollo": "^1.4.14",
 		"react-native": "^0.46.4",
 		"react-native-auth0": "^1.0.3",
 		"react-native-elements": "^0.15.0",

@@ -11,11 +11,16 @@ import { users } from './config/data';
 import colors from './config/colors';
 import { FormLabel, FormInput,FormValidationMessage,Button,Text,CheckBox,SearchBar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Grid, Col, Row} from 'react-native-elements';
-import MapView from 'react-native-maps';
 
-var myDB = require('./DAAsyncStorage');
-var myDBInstance = new myDB();
+import { graphql, gql} from 'react-apollo'
+
+const createPostMutation = gql`
+  mutation ($address: String!, $categoryName: String!, $checkinCount: String!, $city: String!, $icon: String!, $name: String!, $rating: String!, $venueID: String!, $venueText: String!){
+    createVenue(address: $address, categoryName: $categoryName, checkinCount: $checkinCount, city: $city, icon: $icon, name: $name, rating: $rating, venueID: $venueID, venueText: $venueText) {
+      id
+    }
+  }
+`
  
 
  var offsetvalue = 0
@@ -29,6 +34,8 @@ var foursquare = require('react-native-foursquare-api')({
 
 class Feed extends Component {
   
+
+
   async setTheItems(key,val,callback) {
     try {
       await AsyncStorage.setItem(key,val);
@@ -42,6 +49,18 @@ class Feed extends Component {
   constructor(props) {
     super(props);
 
+this.postgraph = {
+  address: "yakup",
+  categoryName: "yakup",
+  checkinCount: "yakup",
+  city: "yakup",
+  icon: "yakup",
+  name: "yakup",
+  rating: "yakup",
+  venueID: "yakup",
+  venueText: "yakup"
+}
+
    this.state = {
       latitude: null,
       longitude: null,
@@ -51,6 +70,8 @@ class Feed extends Component {
       venueimg: [],
       selectedvenue: [],
       tempvenue: null,
+       description: 'hello',
+    imageUrl: 'hello',
     };
 }  
 
@@ -66,8 +87,8 @@ class Feed extends Component {
    this.setTheItems("address",venuem.venue.location.address,function(){}.bind(this));
    this.setTheItems("city",venuem.venue.location.city,function(){}.bind(this));
    this.setTheItems("id",venuem.venue.id,function(){}.bind(this));
-   //this.setTheItems("currency",this.state.venuepricecurrency,function(){}.bind(this));
-   //this.setTheItems("venuemessage",this.state.venuepricemessage,function(){}.bind(this));
+   this.setTheItems("currency",venuem.venue.price.currency ,function(){}.bind(this));
+   this.setTheItems("venuemessage",venuem.venue.price.message,function(){}.bind(this));
    this.setTheItems("rating",venuem.venue.rating+"",function(){}.bind(this));
    this.setTheItems("checkincount",venuem.venue.stats.checkinsCount+"",function(){}.bind(this));   
     }
@@ -86,6 +107,18 @@ class Feed extends Component {
     this.setState({selectedvenue: this.state.selectedvenue})
     console.log(this.state.selectedvenue)
    this.getNewVenue()
+   this.state.selectedvenue.map((venuem,index) => {
+      this.postgraph.address = venuem.venue.location.address
+      this.postgraph.categoryName = venuem.venue.categories[0].name
+      this.postgraph.checkinCount = venuem.venue.stats.checkinsCount+" "
+      this.postgraph.city = venuem.venue.location.city
+      this.postgraph.icon = venuem.venue.categories[0].icon.prefix+"32"+venuem.venue.categories[0].icon.suffix
+      this.postgraph.name = venuem.venue.name
+      this.postgraph.rating = venuem.venue.rating+""
+      this.postgraph.venueID = venuem.venue.id
+      this.postgraph.venueText = venuem.tips[0].text
+   })
+   this._createPost()
   }
 
 
@@ -224,6 +257,15 @@ let getir = this.state.selectedvenue.map((venuem,index) => {
       
     );
   }
+
+   _createPost = async () => {
+     const {address, categoryName, checkinCount, city, icon, name, rating, venueID, venueText} = this.postgraph
+     await this.props.createPostMutation({
+       variables: {address, categoryName, checkinCount, city, icon, name, rating, venueID, venueText}
+     })
+     this.props.onComplete()
+   }
+
 }
 
 const styles = StyleSheet.create({
@@ -242,5 +284,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
 });
+const PageWithMutation = graphql(createPostMutation, {name: 'createPostMutation'})(Feed)
 
-export default Feed;
+export default PageWithMutation;

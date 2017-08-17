@@ -10,6 +10,7 @@ import Home from '../home';
 import Login from '../login';
 import Signup from '../signup';
 
+
 export const FeedStack = StackNavigator({
   Feed: {
     screen: Feed,
@@ -79,6 +80,7 @@ export const SignupStack = StackNavigator({
     screen: Signup,
     navigationOptions: {
       title: 'Signup',
+      
     },
   },
 });
