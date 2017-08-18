@@ -15,11 +15,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { graphql, gql} from 'react-apollo'
 
 const createPostMutation = gql`
-  mutation ($address: String!, $categoryName: String!, $checkinCount: String!, $city: String!, $icon: String!, $name: String!, $rating: String!, $venueID: String!, $venueText: String!){
-    createVenue(address: $address, categoryName: $categoryName, checkinCount: $checkinCount, city: $city, icon: $icon, name: $name, rating: $rating, venueID: $venueID, venueText: $venueText) {
+  mutation ($address: String!, $categoryName: String!, $checkinCount: String!, $city: String!, $icon: String!, $name: String!, $rating: String!, $venueID: String!, $venueText: String!,$venueMessage: String!, $currency: String!){
+    createVenue(address: $address, categoryName: $categoryName, checkinCount: $checkinCount, city: $city, icon: $icon, name: $name, rating: $rating, venueID: $venueID, venueText: $venueText, venueMessage: $venueMessage, currency: $currency) {
       id
     }
-  }
+  }, 
 `
  
 
@@ -58,7 +58,9 @@ this.postgraph = {
   name: "yakup",
   rating: "yakup",
   venueID: "yakup",
-  venueText: "yakup"
+  venueText: "yakup",
+  venueMessage: "yakup",
+  currency: "yakup"
 }
 
    this.state = {
@@ -70,8 +72,8 @@ this.postgraph = {
       venueimg: [],
       selectedvenue: [],
       tempvenue: null,
-       description: 'hello',
-    imageUrl: 'hello',
+       currency: null,
+       venueMessage: null,
     };
 }  
 
@@ -79,10 +81,12 @@ this.postgraph = {
 
     //AsyncStorage.multiRemove(["@MySuperStore:key","@VenueDetail:key","username","myKey"])
     this.props.navigation.navigate('Details', { ...venuem });
-var currency = " ", venuemessage = " "
+
+    var currency = " ", venueMessage = " "
 try {
-  currency = venuem.venue.price.currency
-  venuemessage = venuem.venue.price.message
+  currency =  venuem.venue.price.currency
+  venueMessage = venuem.venue.price.message
+  
 } catch (error) {
   console.log(error)
 }
@@ -114,7 +118,18 @@ try {
     this.setState({selectedvenue: this.state.selectedvenue})
     console.log(this.state.selectedvenue)
    this.getNewVenue()
+
+
+   
    this.state.selectedvenue.map((venuem,index) => {
+     var currency = " ", venueMessage = " "
+     try {
+  currency =  venuem.venue.price.currency
+  venueMessage = venuem.venue.price.message
+  
+} catch (error) {
+  console.log(error)
+}
       this.postgraph.address = venuem.venue.location.address
       this.postgraph.categoryName = venuem.venue.categories[0].name
       this.postgraph.checkinCount = venuem.venue.stats.checkinsCount+" "
@@ -124,6 +139,8 @@ try {
       this.postgraph.rating = venuem.venue.rating+""
       this.postgraph.venueID = venuem.venue.id
       this.postgraph.venueText = venuem.tips[0].text
+      this.postgraph.venueMessage = venueMessage
+      this.postgraph.currency = currency
    })
    this._createPost()
   }
@@ -266,11 +283,10 @@ let getir = this.state.selectedvenue.map((venuem,index) => {
   }
 
    _createPost = async () => {
-     const {address, categoryName, checkinCount, city, icon, name, rating, venueID, venueText} = this.postgraph
+     const {address, categoryName, checkinCount, city, icon, name, rating, venueID, venueText, currency, venueMessage} = this.postgraph
      await this.props.createPostMutation({
-       variables: {address, categoryName, checkinCount, city, icon, name, rating, venueID, venueText}
+       variables: {address, categoryName, checkinCount, city, icon, name, rating, venueID, venueText, venueMessage, currency}
      })
-     this.props.onComplete()
    }
 
 }
